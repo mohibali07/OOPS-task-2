@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desk &amp; Co. — Minimal Tech Store</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Top Storefront Navbar -->
+    <header class="navbar">
+      <div class="nav-inner">
+        <a href="#" class="brand">Desk &amp; Co.</a>
+
+        <div class="search-wrap">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search laptops, audio, accessories..."
+            aria-label="Search products"
+          />
+        </div>
+
+        <div class="nav-actions">
+          <span id="status-msg" class="status-pill" aria-live="polite"></span>
+          <a href="#cart-section" class="cart-pill">
+            Cart <span id="cart-count" class="count-badge">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Filter & Sort Bar -->
+      <div class="toolbar">
+        <div class="category-tabs" id="category-tabs">
+          <button class="tab active" data-category="All">All</button>
+          <button class="tab" data-category="Computers">Computers</button>
+          <button class="tab" data-category="Audio">Audio</button>
+          <button class="tab" data-category="Accessories">Accessories</button>
+          <button class="tab" data-category="Sale">On Sale</button>
+        </div>
+
+        <div class="sort-wrap">
+          <label for="sort-select">Sort:</label>
+          <select id="sort-select">
+            <option value="default">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Main Store Layout -->
+      <div class="store-layout">
+        <!-- Left: Product Grid -->
+        <section aria-label="Products">
+          <div id="product-grid" class="product-grid"></div>
+        </section>
+
+        <!-- Right: Sticky Shopping Cart -->
+        <aside id="cart-section" class="cart-panel" aria-label="Shopping Cart">
+          <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button id="clear-btn" class="link-btn" type="button">
+              Clear all
+            </button>
+          </div>
+
+          <div id="cart-list" class="cart-list"></div>
+
+          <!-- Promo Code -->
+          <form id="promo-form" class="promo-form">
+            <input
+              type="text"
+              id="promo-input"
+              placeholder="Promo code (try SAVE10)"
+            />
+            <button type="submit" class="btn btn-outline">Apply</button>
+          </form>
+          <p id="promo-msg" class="promo-msg"></p>
+
+          <!-- Totals -->
+          <div class="cart-summary">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row savings-row" id="savings-row" hidden>
+              <span>Discounts &amp; Promo</span>
+              <span id="cart-savings">-$0.00</span>
+            </div>
+            <div class="summary-row total-row">
+              <strong>Total</strong>
+              <strong id="cart-total">$0.00</strong>
+            </div>
+
+            <button
+              id="checkout-btn"
+              class="btn btn-primary checkout-btn"
+              type="button"
+            >
+              Checkout
+            </button>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Order Confirmation / Receipt Modal -->
+    <div id="receipt-modal" class="modal-backdrop" hidden>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div class="modal-header">
+          <div>
+            <span class="order-tag">Order Confirmed</span>
+            <h3 id="modal-title">Thanks for your order!</h3>
+          </div>
+          <button id="close-modal-btn" class="close-btn" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <pre id="receipt-output" class="receipt-box"></pre>
+        <button
+          id="continue-btn"
+          class="btn btn-primary modal-done-btn"
+          type="button"
+        >
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
